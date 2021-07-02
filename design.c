@@ -12,7 +12,7 @@
         在一台机器当中，开启多个进程充分利用多核，一般设置工作进程的个数为CPU的核心数；
         nginx就是采用这种方式；
         nginx当中的worker进程，通过共享内存来进行共享数据；也需要考虑使用锁；
-        
+
     3.CSP
         以go语言为代表，并发实体是协程（用户态线程、轻量级线程）；内部也是采用多少个核心
         开启多少个内核线程来充分利用多核；
@@ -38,5 +38,18 @@
                 b）基于自身网络库，实现了常用的数据库驱动（异步连接方案），并融合了lua
                 数据结构；
 
-        
+        Actor之间消息：
+            同一进程内的Actor消息必定会到达，原理是A服务创建内存数据将其放到B服务的消息队列
+
+            skynet.send(addr, typename, ...) 单方面的通知
+
+            skynet.call(addr, typename, ...) 请求回应
+                对端需要显示调用skynet.ret(...)回应skynet.call请求
+                或者通过调用skynet.response()延迟回应skynet.call的请求
+
+        网络消息：
+            skynet_message
+
+        定时器消息：
+            skynet_message
 */
