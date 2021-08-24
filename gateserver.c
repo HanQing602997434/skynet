@@ -1,22 +1,22 @@
 
 //skynet框架gateserver：
 /*
-    gateserver call by gate，message accept by gate，but almost message handle in gateserver
-    data：
+    gate require gateserver, 消息接收在gate模块，消息处理在gateserver
+    数据：
         socket：listen socket
-        queue：message queue
-        maxclient：max client
-        client_number：connect client number
-        nodelay：no delay
-        connection：connect fd map
+        queue：消息队列
+        maxclient：最大连接数
+        client_number：连接数
+        nodelay：延迟
+        connection：连接的fd
 
-    iterface：
-        MSG.open(fd, msg)：open fd，accept message
-        MSG.close(fd)：close fd
-        dispatch_queue()：handle message queue
-        dispatch_msg(fd, msg, sz)：handle message
-        CMD.open(source, conf)：open listen socket
-        CMD.close()：close listen socket
-        MSG.error(fd, msg)：message error
-        MSG.warning(fd, size)：message warning
+    接口：
+        MSG.open(fd, msg)：打开fd，接收消息
+        MSG.close(fd)：关闭fd
+        dispatch_queue()：处理消息队列
+        dispatch_msg(fd, msg, sz)：处理消息
+        CMD.open(source, conf)：打开 listen socket
+        CMD.close()：关闭 listen socket
+        MSG.error(fd, msg)：消息错误
+        MSG.warning(fd, size)：消息警告
 */
